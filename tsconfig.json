@@ -41,5 +41,5 @@
     "moduleDetection": "force",
     "skipLibCheck": true,
   },
-  "exclude": ["tests", "jest.config.js"]
+  "exclude": ["dist"]
 }
