@@ -1,5 +1,7 @@
+import { normalizeCardNumber } from './utils.js';
+
 export function validateCardNumber(cardNumber: string): boolean {
-  const digits = cardNumber.replace(/\D/g, '');
+  const digits = normalizeCardNumber(cardNumber);
 
   // Per ISO/IEC 7812-1:2017 – valid card numbers are 10–19 digits
   if (digits.length < 10 || digits.length > 19) {
@@ -14,7 +16,7 @@ export function validateCardNumber(cardNumber: string): boolean {
 
   for (let i = cardNumberPayload.length - 1; i >= 0; i--) {
     let digit = parseInt(cardNumberPayload[i]!, 10);
-    
+
     if (shouldDouble) {
       digit *= 2;
       if (digit > 9) {

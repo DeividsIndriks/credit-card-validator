@@ -1,3 +1,5 @@
+import { normalizeCardNumber } from './utils.js';
+
 export type CardType =
   | 'Visa'
   | 'Mastercard';
@@ -8,7 +10,7 @@ const CARD_PATTERNS: { type: CardType; pattern: RegExp }[] = [
 ];
 
 export function getCardType(cardNumber: string): CardType | null {
-  const digits = cardNumber.replace(/\D/g, '');
+  const digits = normalizeCardNumber(cardNumber);
 
   for (const { type, pattern } of CARD_PATTERNS) {
     if (pattern.test(digits)) {
